@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE BUILDER'S FREE STACK 💋</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #FF1F8E;
+  --hot: #FF0070;
+  --blush: #FFD6E8;
+  --rose: #FFA0C8;
+  --cream: #FFF8F5;
+  --dark: #1A0A12;
+  --mauve: #C4547A;
+  --lilac: #E8C0D8;
+  --gold: #D4A853;
+  --deep: #8B0052;
+  --white: #FFFFFF;
+  --soft: #F9EFF5;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ─── MARQUEE TOP BAR ─── */
+.top-bar {
+  background: var(--dark);
+  color: var(--blush);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 10px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.top-bar-inner {
+  display: inline-block;
+  animation: scroll-left 30s linear infinite;
+}
+.top-bar-inner span { margin: 0 2.5rem; }
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ─── NAV ─── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--lilac);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.9rem;
+  color: var(--hot);
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-logo em {
+  font-style: italic;
+  font-size: 0.55em;
+  color: var(--mauve);
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.15em;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.nav-links a:hover { color: var(--hot); }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.nav-count {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  color: var(--mauve);
+  font-style: italic;
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.hero-left {
+  background: var(--soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3rem 4rem 4rem;
+  position: relative;
+  z-index: 2;
+}
+.hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mauve);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--rose);
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.02;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--hot);
+  display: block;
+}
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--mauve);
+  margin: 1.25rem 0 2rem;
+  line-height: 1.5;
+  max-width: 380px;
+}
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.hero-badge {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--rose);
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: var(--deep);
+  background: var(--blush);
+  font-weight: 500;
+}
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+.hero-right::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--soft) 0%, transparent 20%),
+              linear-gradient(to top, var(--soft) 0%, transparent 30%);
+  z-index: 1;
+}
+.hero-img-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+}
+.hero-img-grid div {
+  overflow: hidden;
+  background: var(--lilac);
+}
+.hero-img-grid div { position: relative; }
+.hero-img-grid div::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,0,112,0.3) 0%, rgba(139,0,82,0.2) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-img-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.6) brightness(1.0);
+  transition: transform 0.8s ease;
+}
+.hero-img-grid div:hover img { transform: scale(1.05); }
+.hero-floral {
+  position: absolute;
+  bottom: -20px;
+  left: -30px;
+  width: 180px;
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+  font-size: 120px;
+  line-height: 1;
+  transform: rotate(-15deg);
+}
+
+/* ─── DIVIDER BANNER ─── */
+.banner-strip {
+  background: var(--hot);
+  text-align: center;
+  padding: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  border-top: 2px solid var(--deep);
+  border-bottom: 2px solid var(--deep);
+}
+.banner-strip strong { font-weight: 600; font-style: normal; }
+
+/* ─── SEARCH + FILTERS ─── */
+.controls {
+  background: var(--white);
+  border-bottom: 1px solid var(--lilac);
+  padding: 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+.search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--rose);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+.search-input {
+  width: 100%;
+  border: 1px solid var(--lilac);
+  border-radius: 999px;
+  padding: 10px 1.25rem 10px 2.8rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--dark);
+  background: var(--soft);
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.search-input:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(255,31,142,0.08);
+}
+.search-input::placeholder { color: var(--rose); opacity: 0.7; }
+
+.cat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.cat-pill {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--lilac);
+  background: transparent;
+  color: var(--mauve);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+.cat-pill:hover { border-color: var(--rose); color: var(--hot); background: var(--blush); }
+.cat-pill.active { background: var(--hot); border-color: var(--hot); color: var(--white); }
+
+/* ─── MAIN GRID LAYOUT ─── */
+.page-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ─── SECTION HEADER ─── */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 3.5rem 0 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--lilac);
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--dark);
+}
+.section-count {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  color: var(--mauve);
+  font-style: italic;
+  margin-left: auto;
+}
+
+/* ─── PRODUCT GRID ─── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem 1.25rem;
+}
+
+/* ─── PRODUCT CARD ─── */
+.product-card {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s;
+}
+.product-card:hover { transform: translateY(-4px); }
+.product-card:hover .card-img-wrap img { transform: scale(1.04); }
+
+.card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--lilac);
+  border-radius: 4px;
+  margin-bottom: 0.85rem;
+}
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: saturate(0.65) brightness(0.95);
+}
+.card-img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255,0,112,0.28) 0%, rgba(196,84,122,0.2) 50%, rgba(139,0,82,0.3) 100%);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 4px;
+}
+.card-tier-badge, .card-wishlist, .card-overlay { position: absolute; z-index: 2; }
+
+/* Tier badge on image */
+.card-tier-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+}
+.tier-FREE { background: var(--hot); color: var(--white); }
+.tier-FREEMIUM { background: var(--mauve); color: var(--white); }
+.tier-OPEN { background: var(--dark); color: var(--blush); }
+.tier-BETA { background: var(--gold); color: var(--dark); }
+
+.card-wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.product-card:hover .card-wishlist { opacity: 1; }
+
+.card-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(26,10,18,0.65));
+  padding: 1.5rem 0.75rem 0.75rem;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+.product-card:hover .card-overlay { transform: translateY(0); }
+.card-cta {
+  display: block;
+  text-align: center;
+  background: var(--white);
+  color: var(--dark);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px;
+  border-radius: 2px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+.card-cta:hover { background: var(--hot); color: var(--white); }
+
+/* Card text */
+.card-body { padding: 0 2px; }
+.card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.3;
+  margin-bottom: 0.2rem;
+}
+.card-limit {
+  font-size: 0.72rem;
+  color: var(--hot);
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+.card-desc-short {
+  font-size: 0.73rem;
+  color: #777;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ─── MODAL ─── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,10,18,0.6);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(6px);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  animation: modal-in 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 30px 80px rgba(26,10,18,0.35);
+}
+@keyframes modal-in { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal-img {
+  position: relative;
+  overflow: hidden;
+  background: var(--lilac);
+  min-height: 360px;
+}
+.modal-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.65) brightness(0.95);
+}
+.modal-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255,0,112,0.3) 0%, rgba(139,0,82,0.35) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.modal-content {
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+}
+.modal-tier {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+}
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--dark);
+  color: var(--white);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: transform 0.2s, background 0.2s;
+}
+.modal-close:hover { transform: rotate(90deg); background: var(--hot); }
+.modal-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+.modal-cat {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mauve);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.modal-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #444;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+.modal-detail-box {
+  border: 1px solid var(--lilac);
+  border-radius: 4px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.25rem;
+  background: var(--soft);
+}
+.modal-detail-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+.modal-detail-row:last-child { margin-bottom: 0; }
+.detail-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--dark);
+  color: var(--blush);
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-weight: 500;
+}
+.modal-cta {
+  display: block;
+  text-align: center;
+  background: var(--hot);
+  color: var(--white);
+  padding: 13px;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.modal-cta:hover { background: var(--deep); transform: translateY(-1px); }
+
+/* ─── CAT SECTION ─── */
+.cat-section.hidden { display: none; }
+
+/* ─── PROMO STRIP ─── */
+.promo-strip {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--hot) 50%, var(--mauve) 100%);
+  margin: 3rem 0;
+  border-radius: 6px;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.promo-strip::before {
+  content: '💋 ✨ 💋 ✨ 💋 ✨ 💋';
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  letter-spacing: 0.5rem;
+  opacity: 0.35;
+  white-space: nowrap;
+}
+.promo-strip h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 900;
+  font-style: italic;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.promo-strip p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.85);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.7);
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  border-top: 3px solid var(--hot);
+}
+.footer-logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: var(--rose);
+  margin-bottom: 0.5rem;
+}
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--rose);
+  margin-bottom: 1.5rem;
+}
+.footer-note {
+  font-size: 0.7rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.4);
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+}
+.footer-hearts { font-size: 1.4rem; letter-spacing: 0.5rem; opacity: 0.5; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-right { height: 280px; }
+  .hero-left { padding: 2.5rem 1.5rem; }
+  .modal { grid-template-columns: 1fr; }
+  .modal-img { min-height: 220px; }
+  nav { padding: 0 1rem; }
+  .nav-links { display: none; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem 0.75rem; }
+}
+@media (max-width: 480px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span>600+ verified free tools</span>
+    <span>✦</span>
+    <span>no credit card required</span>
+    <span>✦</span>
+    <span>the builder's free stack</span>
+    <span>✦</span>
+    <span>verified may 2026</span>
+    <span>✦</span>
+    <span>build for free, darling</span>
+    <span>✦</span>
+    <span>600+ verified free tools</span>
+    <span>✦</span>
+    <span>no credit card required</span>
+    <span>✦</span>
+    <span>the builder's free stack</span>
+    <span>✦</span>
+    <span>verified may 2026</span>
+    <span>✦</span>
+    <span>build for free, darling</span>
+    <span>✦</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    The Builder's Free Stack
+    <em>600+ Verified Free Tools</em>
+  </a>
+  <ul class="nav-links">
+    <li><a onclick="filterCat('chat')">AI Chatbots</a></li>
+    <li><a onclick="filterCat('vibe')">Vibe Coding</a></li>
+    <li><a onclick="filterCat('hosting')">Hosting</a></li>
+    <li><a onclick="filterCat('llmapi')">LLM APIs</a></li>
+    <li><a onclick="filterCat('design')">Design</a></li>
+    <li><a onclick="filterCat('all')">All Tools</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-count">600+ tools · May 2026</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">The Builder's Free Stack</div>
+    <h1 class="hero-title">
+      Build Big,
+      <em>Spend Nothing.</em>
+    </h1>
+    <p class="hero-sub">Every tool a modern builder needs — all free to start, all verified May 2026.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">20+ Categories</span>
+      <span class="hero-badge">600+ Tools</span>
+      <span class="hero-badge">0 Credit Cards</span>
+      <span class="hero-badge">100% Free to Start</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-grid">
+      <div>
+        <img src="https://picsum.photos/seed/hero1/600/400" alt="coding aesthetic" loading="lazy">
+      </div>
+      <div>
+        <img src="https://picsum.photos/seed/hero2/600/400" alt="woman tech" loading="lazy">
+      </div>
+      <div>
+        <img src="https://picsum.photos/seed/hero3/600/400" alt="code matrix" loading="lazy">
+      </div>
+      <div>
+        <img src="https://picsum.photos/seed/hero4/600/400" alt="laptop desk" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BANNER -->
+<div class="banner-strip">
+  ✦ <strong>Every tool is free to start.</strong> Because darling, your ideas deserve runway — not a paywall. ✦
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input class="search-input" id="searchInput" type="text" placeholder="Search 600+ free tools…" oninput="filterSearch()">
+  </div>
+  <div class="cat-pills">
+    <button class="cat-pill active" onclick="filterCat('all', this)">All Tools</button>
+    <button class="cat-pill" onclick="filterCat('chat', this)">💬 AI Chatbots</button>
+    <button class="cat-pill" onclick="filterCat('vibe', this)">🛠 Vibe Coding</button>
+    <button class="cat-pill" onclick="filterCat('hosting', this)">🚀 Hosting</button>
+    <button class="cat-pill" onclick="filterCat('database', this)">🗄 Databases</button>
+    <button class="cat-pill" onclick="filterCat('llmapi', this)">🤖 LLM APIs</button>
+    <button class="cat-pill" onclick="filterCat('agentic', this)">⚡ Automation</button>
+    <button class="cat-pill" onclick="filterCat('compute', this)">💻 Compute</button>
+    <button class="cat-pill" onclick="filterCat('design', this)">🎨 Design</button>
+    <button class="cat-pill" onclick="filterCat('auth', this)">🔒 Auth</button>
+    <button class="cat-pill" onclick="filterCat('media', this)">🎬 AI Media</button>
+    <button class="cat-pill" onclick="filterCat('learning', this)">📚 Learning</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="page-main" id="allSections"></div>
+
+<!-- PROMO -->
+<div class="page-main" style="padding-top:0; padding-bottom:0;">
+  <div class="promo-strip">
+    <h2>Your Zero-Cost Full Stack Awaits</h2>
+    <p>600+ free tiers. No excuses. Time to build, gorgeous.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The Builder's Free Stack</div>
+  <div class="footer-tagline">600+ Verified Free Tools · No Credit Card Required</div>
+  <div class="footer-note">Compiled with love in May 2026. Free tiers change frequently — always verify current terms before building critical workflows on any single provider. Now go build something beautiful.</div>
+  <div class="footer-hearts">💋 ✨ 💅 ⚡ 🎀</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="modal" id="modal">
+    <div class="modal-img" id="modalImg">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <img id="modalImgEl" src="" alt="">
+    </div>
+    <div class="modal-content">
+      <span class="modal-tier" id="modalTier">FREE</span>
+      <div class="modal-name" id="modalName">Tool Name</div>
+      <div class="modal-cat" id="modalCat">Category</div>
+      <p class="modal-desc" id="modalDesc">Description</p>
+      <div class="modal-detail-box">
+        <div class="modal-detail-row">
+          <span class="detail-label">Free Tier</span>
+          <span id="modalLimit"></span>
+        </div>
+        <div class="modal-detail-row">
+          <span class="detail-label">URL</span>
+          <span id="modalUrl"></span>
+        </div>
+      </div>
+      <a class="modal-cta" id="modalCTA" href="#" target="_blank" rel="noopener noreferrer">Visit Site →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── IMAGE POOLS ──────────────────────────────────────────────
+// Feminine tech/coding aesthetic images from Unsplash (no auth needed)
+// Picsum Photos with fixed seeds — loads reliably everywhere, no auth required
+// Seeds chosen to give tech/workspace/abstract/feminine vibes
+const IMG_POOLS = {
+  chat: [
+    "https://picsum.photos/seed/chat1/400/530",
+    "https://picsum.photos/seed/chat2/400/530",
+    "https://picsum.photos/seed/chat3/400/530",
+    "https://picsum.photos/seed/chat4/400/530",
+    "https://picsum.photos/seed/chat5/400/530",
+  ],
+  vibe: [
+    "https://picsum.photos/seed/vibe1/400/530",
+    "https://picsum.photos/seed/vibe2/400/530",
+    "https://picsum.photos/seed/vibe3/400/530",
+    "https://picsum.photos/seed/vibe4/400/530",
+    "https://picsum.photos/seed/vibe5/400/530",
+  ],
+  hosting: [
+    "https://picsum.photos/seed/host1/400/530",
+    "https://picsum.photos/seed/host2/400/530",
+    "https://picsum.photos/seed/host3/400/530",
+    "https://picsum.photos/seed/host4/400/530",
+    "https://picsum.photos/seed/host5/400/530",
+  ],
+  database: [
+    "https://picsum.photos/seed/db1/400/530",
+    "https://picsum.photos/seed/db2/400/530",
+    "https://picsum.photos/seed/db3/400/530",
+    "https://picsum.photos/seed/db4/400/530",
+    "https://picsum.photos/seed/db5/400/530",
+  ],
+  llmapi: [
+    "https://picsum.photos/seed/llm1/400/530",
+    "https://picsum.photos/seed/llm2/400/530",
+    "https://picsum.photos/seed/llm3/400/530",
+    "https://picsum.photos/seed/llm4/400/530",
+    "https://picsum.photos/seed/llm5/400/530",
+  ],
+  agentic: [
+    "https://picsum.photos/seed/agent1/400/530",
+    "https://picsum.photos/seed/agent2/400/530",
+    "https://picsum.photos/seed/agent3/400/530",
+    "https://picsum.photos/seed/agent4/400/530",
+    "https://picsum.photos/seed/agent5/400/530",
+  ],
+  compute: [
+    "https://picsum.photos/seed/gpu1/400/530",
+    "https://picsum.photos/seed/gpu2/400/530",
+    "https://picsum.photos/seed/gpu3/400/530",
+    "https://picsum.photos/seed/gpu4/400/530",
+    "https://picsum.photos/seed/gpu5/400/530",
+  ],
+  design: [
+    "https://picsum.photos/seed/des1/400/530",
+    "https://picsum.photos/seed/des2/400/530",
+    "https://picsum.photos/seed/des3/400/530",
+    "https://picsum.photos/seed/des4/400/530",
+    "https://picsum.photos/seed/des5/400/530",
+  ],
+  auth: [
+    "https://picsum.photos/seed/auth1/400/530",
+    "https://picsum.photos/seed/auth2/400/530",
+    "https://picsum.photos/seed/auth3/400/530",
+    "https://picsum.photos/seed/auth4/400/530",
+    "https://picsum.photos/seed/auth5/400/530",
+  ],
+  media: [
+    "https://picsum.photos/seed/med1/400/530",
+    "https://picsum.photos/seed/med2/400/530",
+    "https://picsum.photos/seed/med3/400/530",
+    "https://picsum.photos/seed/med4/400/530",
+    "https://picsum.photos/seed/med5/400/530",
+  ],
+  learning: [
+    "https://picsum.photos/seed/learn1/400/530",
+    "https://picsum.photos/seed/learn2/400/530",
+    "https://picsum.photos/seed/learn3/400/530",
+    "https://picsum.photos/seed/learn4/400/530",
+    "https://picsum.photos/seed/learn5/400/530",
+  ],
+};
+
+function getImg(catKey, idx) {
+  const pool = IMG_POOLS[catKey] || IMG_POOLS.chat;
+  return pool[idx % pool.length];
+}
+
+// ── DATA ────────────────────────────────────────────────────
+const TOOLS = {
+  chat: {
+    label: "AI Chatbots & General Assistants",
+    emoji: "💬",
+    tools: [
+      { name:"Claude (Anthropic)", tier:"FREE", limit:"Free tier w/ daily limits", url:"https://claude.ai", desc:"Advanced reasoning, coding, writing, analysis. Claude Sonnet 4.6 available free." },
+      { name:"ChatGPT (OpenAI)", tier:"FREE", limit:"GPT-4o + daily caps", url:"https://chat.openai.com", desc:"Most widely used AI. Auto-switches to mini model at cap." },
+      { name:"Google Gemini", tier:"FREE", limit:"Full Gemini 2.5 Flash free", url:"https://gemini.google.com", desc:"Deep Google integration, 1M context, multimodal." },
+      { name:"Perplexity AI", tier:"FREEMIUM", limit:"Free plan available", url:"https://perplexity.ai", desc:"AI-powered search engine with citations." },
+      { name:"Microsoft Copilot", tier:"FREE", limit:"Free via Edge/web", url:"https://copilot.microsoft.com", desc:"GPT-4 powered, free in browser. Deep Office 365 integration on paid plans." },
+      { name:"Meta AI", tier:"FREE", limit:"Fully free", url:"https://meta.ai", desc:"Llama-powered assistant available across Meta apps and standalone." },
+      { name:"Mistral Le Chat", tier:"FREE", limit:"Free tier", url:"https://chat.mistral.ai", desc:"European AI, fast and capable. Free access to Mistral models." },
+      { name:"Poe (Quora)", tier:"FREEMIUM", limit:"Free daily credits", url:"https://poe.com", desc:"Multi-model hub: Claude, GPT, Gemini, Llama in one place." },
+      { name:"HuggingChat", tier:"FREE", limit:"Fully free", url:"https://huggingface.co/chat", desc:"Open-source models, no account required. Llama, Mixtral, Zephyr and more." },
+      { name:"Groq Chat", tier:"FREE", limit:"Fast free inference", url:"https://groq.com", desc:"Fastest free LLM UI: 300+ tokens/sec on Llama 70B." },
+      { name:"Google AI Studio", tier:"FREE", limit:"1,500 req/day free", url:"https://aistudio.google.com", desc:"Prototype with Gemini models, no billing required." },
+      { name:"NotebookLM (Google)", tier:"FREE", limit:"Completely free", url:"https://notebooklm.google", desc:"Upload docs, PDFs, URLs → AI research assistant. Generates audio overviews." },
+      { name:"DeepSeek Chat", tier:"FREE", limit:"Free web UI", url:"https://chat.deepseek.com", desc:"Strong open-source model. Free web interface, reasoning model included." },
+      { name:"Grok (xAI)", tier:"FREE", limit:"Free via X", url:"https://x.com/i/grok", desc:"Elon Musk's AI, available free to X users. Real-time web access." },
+      { name:"LM Studio", tier:"FREE", limit:"Free local runner", url:"https://lmstudio.ai", desc:"Run any open-source LLM locally. Beautiful GUI. No internet required." },
+      { name:"Ollama", tier:"FREE", limit:"Free CLI runner", url:"https://ollama.ai", desc:"Pull and run LLMs locally with one command. 100+ models supported." },
+      { name:"Open WebUI", tier:"FREE", limit:"Free self-hosted", url:"https://openwebui.com", desc:"Powerful self-hosted ChatGPT-like interface for Ollama/OpenAI APIs." },
+      { name:"Llama 3 (Meta)", tier:"OPEN SOURCE", limit:"Open weights — 8B/70B/405B", url:"https://llama.meta.com", desc:"Download and run locally for free." },
+      { name:"Gemma 3 (Google)", tier:"OPEN SOURCE", limit:"Open weights free", url:"https://ai.google.dev/gemma", desc:"Google's open-source models (2B-27B). Free API tiers." },
+      { name:"You.com", tier:"FREE", limit:"Free AI search", url:"https://you.com", desc:"AI search with code, write, and research modes. Privacy-focused." },
+    ]
+  },
+  vibe: {
+    label: "Vibe Coding & AI App Builders",
+    emoji: "🛠",
+    tools: [
+      { name:"Lovable", tier:"FREEMIUM", limit:"Free tier with credits", url:"https://lovable.dev", desc:"Full-stack AI app builder. Generates frontend + backend + auth + Stripe." },
+      { name:"Bolt.new", tier:"FREEMIUM", limit:"10M free tokens/month", url:"https://bolt.new", desc:"Browser-based full-stack builder. WebContainer tech runs Node.js in browser." },
+      { name:"Replit", tier:"FREEMIUM", limit:"Free starter tier", url:"https://replit.com", desc:"Browser IDE + AI agent. 50+ languages, built-in DB, auth, hosting." },
+      { name:"v0 by Vercel", tier:"FREEMIUM", limit:"Free tier w/ Vercel", url:"https://v0.dev", desc:"React/Next.js UI generator. Generates shadcn/ui components. 3.5M+ users." },
+      { name:"GitHub Codespaces", tier:"FREE", limit:"60 hrs/month free", url:"https://github.com/codespaces", desc:"VS Code in the browser. Free tier includes 60 hrs/month." },
+      { name:"Cursor", tier:"FREEMIUM", limit:"Free tier (500 req/mo)", url:"https://cursor.com", desc:"AI-native VS Code fork. Context-aware completions. Most popular AI IDE." },
+      { name:"Windsurf (Codeium)", tier:"FREEMIUM", limit:"25 free credits/month", url:"https://codeium.com/windsurf", desc:"First IDE with integrated AI agent. Cascade agent for multi-file edits." },
+      { name:"GitHub Copilot", tier:"FREEMIUM", limit:"Free tier (2K/mo)", url:"https://github.com/features/copilot", desc:"World's most-used AI coding assistant. Free for students/open-source." },
+      { name:"Codeium", tier:"FREE", limit:"Unlimited free tier", url:"https://codeium.com", desc:"Free forever AI autocomplete. 70+ languages, all major IDEs." },
+      { name:"Aider", tier:"OPEN SOURCE", limit:"Free CLI tool", url:"https://aider.chat", desc:"AI pair programmer in your terminal. Works with git. Edits files across your codebase." },
+      { name:"Claude Artifacts", tier:"FREE", limit:"Built into Claude", url:"https://claude.ai", desc:"Build interactive React/HTML components directly in Claude chat." },
+      { name:"Streamlit", tier:"FREE", limit:"Free community cloud", url:"https://streamlit.io", desc:"Turn Python scripts into web apps. Free deployment on Community Cloud." },
+      { name:"Gradio", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://gradio.app", desc:"Build ML demos as web apps in Python. Host free on Hugging Face Spaces." },
+      { name:"Framer AI", tier:"FREEMIUM", limit:"Free tier", url:"https://framer.com", desc:"AI website and landing page builder. Stunning design output." },
+      { name:"Gamma", tier:"FREEMIUM", limit:"Free tier", url:"https://gamma.app", desc:"AI presentation and document builder. Unlimited generation, limited exports." },
+    ]
+  },
+  hosting: {
+    label: "Free Hosting & Deployment Platforms",
+    emoji: "🚀",
+    tools: [
+      { name:"Vercel", tier:"FREE", limit:"100GB BW, 1M fn calls free", url:"https://vercel.com", desc:"Best for Next.js. Edge functions, preview deploys, zero-config. No credit card." },
+      { name:"Netlify", tier:"FREEMIUM", limit:"300 credits/month", url:"https://netlify.com", desc:"JAMstack pioneer. Serverless functions, form handling, deploy previews." },
+      { name:"Render", tier:"FREE", limit:"Static sites free + $750/mo credit", url:"https://render.com", desc:"No-credit-card full-stack option. Free PostgreSQL + web services." },
+      { name:"Cloudflare Pages", tier:"FREE", limit:"Unlimited bandwidth free", url:"https://pages.cloudflare.com", desc:"Most generous static hosting free tier. 500 builds/month, 100 sites." },
+      { name:"GitHub Pages", tier:"FREE", limit:"Free for public repos", url:"https://pages.github.com", desc:"Host from GitHub repos. Free Jekyll support. Custom domain with CNAME." },
+      { name:"Firebase Hosting", tier:"FREE", limit:"10 GB storage, 360 MB/day", url:"https://firebase.google.com", desc:"Google-powered hosting. Tight Firebase ecosystem integration." },
+      { name:"Railway", tier:"FREEMIUM", limit:"$5 trial, $1/mo ongoing", url:"https://railway.app", desc:"Best developer experience for full-stack. Auto-detects runtime." },
+      { name:"Cloudflare Workers", tier:"FREE", limit:"100K req/day free", url:"https://workers.cloudflare.com", desc:"Serverless edge functions at 300+ locations. Free tier is very generous." },
+      { name:"Supabase", tier:"FREE", limit:"Free project (pauses 1wk)", url:"https://supabase.com", desc:"PostgreSQL + auth + storage + real-time + edge functions. Best BaaS free tier." },
+      { name:"Oracle Cloud Free Tier", tier:"FREE", limit:"2x Ampere A1 VMs always-free", url:"https://oracle.com/cloud/free", desc:"2 x Ampere A1 VMs (4 OCPUs, 24 GB RAM) always free. Best free compute." },
+      { name:"Koyeb", tier:"FREE", limit:"1 free service, 512MB RAM", url:"https://koyeb.com", desc:"Scale-to-zero free web service + free Postgres. Good Heroku alternative." },
+      { name:"Coolify", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://coolify.io", desc:"Open-source self-hosted alternative to Heroku/Netlify/Vercel." },
+      { name:"Dokku", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://dokku.com", desc:"Self-hosted Heroku using Docker. 100+ plugins, full PaaS on a VPS." },
+      { name:"PocketBase", tier:"OPEN SOURCE", limit:"Free self-host", url:"https://pocketbase.io", desc:"Single Go binary: database + auth + file storage + admin UI." },
+    ]
+  },
+  database: {
+    label: "Free Databases & Backend Services",
+    emoji: "🗄",
+    tools: [
+      { name:"Supabase", tier:"FREE", limit:"500MB PostgreSQL free", url:"https://supabase.com", desc:"Open-source Firebase alternative. Postgres + auth + storage + real-time." },
+      { name:"Neon", tier:"FREE", limit:"0.5 GB per project, 100 projects", url:"https://neon.tech", desc:"Serverless Postgres. Scale-to-zero, branching, instant cold starts." },
+      { name:"Turso", tier:"FREE", limit:"5 GB, 100 databases", url:"https://turso.tech", desc:"SQLite at the edge. 500M row reads/month free." },
+      { name:"Cloudflare D1", tier:"FREE", limit:"5 GB, 25M reads/day", url:"https://developers.cloudflare.com/d1", desc:"SQLite in Cloudflare's network. Integrated with Workers." },
+      { name:"MongoDB Atlas", tier:"FREE", limit:"512 MB shared cluster", url:"https://mongodb.com/atlas", desc:"Document database. Free shared cluster forever." },
+      { name:"CockroachDB", tier:"FREE", limit:"10 GiB free", url:"https://cockroachlabs.com", desc:"Distributed SQL. Automatic failover. Postgres-compatible." },
+      { name:"Upstash Redis", tier:"FREE", limit:"500K commands/month free", url:"https://upstash.com", desc:"Serverless Redis. Pay per request. Free tier for caching and rate-limiting." },
+      { name:"Qdrant", tier:"OPEN SOURCE", limit:"Free OSS + cloud free tier", url:"https://qdrant.tech", desc:"Vector database for AI similarity search. Self-host free." },
+      { name:"Chroma", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://trychroma.com", desc:"Open-source vector database for AI apps. LangChain/LlamaIndex native." },
+      { name:"Pinecone", tier:"FREE", limit:"Free serverless plan", url:"https://pinecone.io", desc:"Managed vector database. Free serverless plan for RAG prototypes." },
+      { name:"SQLite", tier:"OPEN SOURCE", limit:"Fully free embedded", url:"https://sqlite.org", desc:"World's most deployed database. File-based, no server." },
+      { name:"DuckDB", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://duckdb.org", desc:"In-process analytical database. Fastest local data analysis." },
+      { name:"Prisma", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://prisma.io", desc:"Next-gen Node.js ORM. Type-safe database access." },
+      { name:"Metabase", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://metabase.com", desc:"Open-source BI tool. Self-host free. Beautiful charts from SQL queries." },
+    ]
+  },
+  llmapi: {
+    label: "Free LLM APIs & Model Access",
+    emoji: "🤖",
+    tools: [
+      { name:"Google AI Studio API", tier:"FREE", limit:"1,500 req/day Gemini 2.5 Flash", url:"https://aistudio.google.com", desc:"Best free frontier model API. OpenAI-compatible endpoint. No credit card." },
+      { name:"Groq API", tier:"FREE", limit:"14,400 RPD (most models)", url:"https://console.groq.com", desc:"World's fastest free LLM inference. LPU hardware. 300+ tokens/sec." },
+      { name:"Cerebras Inference", tier:"FREE", limit:"60K tokens/minute", url:"https://inference.cerebras.ai", desc:"Wafer-scale chip inference. Ultra-fast, generous daily limits." },
+      { name:"OpenRouter", tier:"FREE", limit:"11+ free models, 200 RPD", url:"https://openrouter.ai", desc:"Single API key for 300+ models. Free models: Llama, Gemma, Mistral variants." },
+      { name:"GitHub Models", tier:"FREE", limit:"Free in GitHub account — 15 RPM", url:"https://github.com/marketplace/models", desc:"GPT-4o, o1-mini, Llama 3, Mistral via GitHub. Rate limited but free." },
+      { name:"HuggingFace Inference", tier:"FREE", limit:"2,000 req/day", url:"https://api-inference.huggingface.co", desc:"Access any public model. Rate limited but massive model selection." },
+      { name:"Together AI", tier:"FREEMIUM", limit:"$25 free credits signup", url:"https://together.ai", desc:"Fast inference for open-source models. Llama 4, Mixtral." },
+      { name:"Ollama Local API", tier:"FREE", limit:"Fully free locally", url:"https://ollama.ai", desc:"Local model serving via REST API. OpenAI-compatible. Pull any model." },
+      { name:"LiteLLM", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://litellm.ai", desc:"Unified API across 100+ LLM providers. Route, fallback, retry automatically." },
+      { name:"LangChain", tier:"OPEN SOURCE", limit:"Free open source", url:"https://langchain.com", desc:"LLM orchestration framework. Build chains and agents." },
+      { name:"LangGraph", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://langchain-ai.github.io/langgraph", desc:"Build stateful multi-actor AI apps. Graphs of LLM calls." },
+      { name:"CrewAI", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://crewai.com", desc:"Multi-agent framework. Role-based agents with memory and tools." },
+      { name:"Langfuse", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://langfuse.com", desc:"LLM observability and tracing. See every API call, cost, and latency." },
+      { name:"Nomic Embed", tier:"FREE", limit:"Free API", url:"https://nomic.ai", desc:"Free embedding API. Long context (8K tokens) embedding model." },
+    ]
+  },
+  agentic: {
+    label: "Agentic & Workflow Automation",
+    emoji: "⚡",
+    tools: [
+      { name:"n8n (self-hosted)", tier:"OPEN SOURCE", limit:"Free community edition", url:"https://n8n.io", desc:"Open-source workflow automation. 400+ integrations. AI agent nodes built-in." },
+      { name:"Make.com", tier:"FREE", limit:"1,000 ops/month free", url:"https://make.com", desc:"Visual workflow builder. Better for complex multi-step logic than Zapier." },
+      { name:"Zapier", tier:"FREE", limit:"100 tasks/month — 5 Zaps", url:"https://zapier.com", desc:"7,000+ app integrations. Best beginner automation tool." },
+      { name:"Flowise", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://flowiseai.com", desc:"Open-source LangChain visual builder. Drag-drop AI workflows, RAG, chatbots." },
+      { name:"Dify", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://dify.ai", desc:"Open-source LLM app development platform. Prompt IDE + RAG + agent orchestration." },
+      { name:"Activepieces", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://activepieces.com", desc:"Open-source Zapier alternative. Self-host free." },
+      { name:"Pipedream", tier:"FREE", limit:"10K events/month free", url:"https://pipedream.com", desc:"Developer-first automation. Node.js/Python code steps. HTTP triggers." },
+      { name:"Playwright", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://playwright.dev", desc:"Microsoft's browser automation. Cross-browser, fast, reliable." },
+      { name:"Firecrawl", tier:"FREEMIUM", limit:"Free tier", url:"https://firecrawl.dev", desc:"Turn websites into LLM-ready data. Markdown output from any URL." },
+      { name:"Resend", tier:"FREE", limit:"Free 3K emails/month", url:"https://resend.com", desc:"Email API for developers. React email templates." },
+      { name:"ElevenLabs", tier:"FREE", limit:"Free 10K chars/month", url:"https://elevenlabs.io", desc:"Text-to-speech and voice cloning. Free tier for non-commercial use." },
+      { name:"Trigger.dev", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://trigger.dev", desc:"Background jobs for modern stacks. Open-source, TypeScript-native." },
+    ]
+  },
+  compute: {
+    label: "Compute + GPU Resources",
+    emoji: "💻",
+    tools: [
+      { name:"Google Colab", tier:"FREE", limit:"~30 GPU hrs/week free", url:"https://colab.research.google.com", desc:"Most popular free GPU notebook. T4/L4 GPUs, Google Drive integration." },
+      { name:"Kaggle Notebooks", tier:"FREE", limit:"30 GPU hrs/week", url:"https://kaggle.com/code", desc:"Tesla P100 or T4. 9-hr sessions with background execution. 50K+ public datasets." },
+      { name:"AWS SageMaker Studio Lab", tier:"FREE", limit:"4 GPU hrs/day — no AWS account", url:"https://studiolab.sagemaker.aws", desc:"Amazon's free ML environment. T4 GPU, 4 hrs/day. No credit card." },
+      { name:"Oracle Cloud Free Tier", tier:"FREE", limit:"4 ARM CPUs, 24 GB RAM always-free", url:"https://oracle.com/cloud/free", desc:"Best always-free VMs. No time limit. 4 OCPUs, 24 GB RAM." },
+      { name:"Google Cloud Free Tier", tier:"FREE", limit:"$300 credits + f1-micro always-free", url:"https://cloud.google.com/free", desc:"$300 new account credits usable on T4 GPUs." },
+      { name:"GitHub Actions", tier:"FREE", limit:"2,000 free minutes/month", url:"https://github.com/features/actions", desc:"CI/CD with free compute. Public repos get unlimited minutes." },
+      { name:"GitHub Student Pack", tier:"FREE", limit:"$100K+ value", url:"https://education.github.com/pack", desc:"Students get 100+ free tools including DigitalOcean $200 and more." },
+      { name:"Google for Startups", tier:"FREE", limit:"Up to $350K credits", url:"https://cloud.google.com/startup", desc:"Highest credit program for VC-backed AI startups. H100, TPU v5e access." },
+      { name:"Microsoft for Startups", tier:"FREE", limit:"Up to $150K credits", url:"https://microsoft.com/en-us/startups", desc:"Azure credits for startups with traction. OpenAI API access included." },
+      { name:"PostHog", tier:"FREE", limit:"Free OSS — 1M events cloud", url:"https://posthog.com", desc:"Product analytics and session replay. Self-host free." },
+      { name:"New Relic", tier:"FREE", limit:"Free 100GB/month", url:"https://newrelic.com", desc:"Full observability platform. Free 100GB data ingest/month forever." },
+    ]
+  },
+  design: {
+    label: "Design & UI Tools",
+    emoji: "🎨",
+    tools: [
+      { name:"Figma", tier:"FREE", limit:"Free 3 projects", url:"https://figma.com", desc:"Industry-standard UI design. Free for 3 projects, unlimited collaborators. AI features built-in." },
+      { name:"Penpot", tier:"OPEN SOURCE", limit:"Fully free, OSS", url:"https://penpot.app", desc:"Open-source Figma alternative. Design and prototype in the browser." },
+      { name:"Canva", tier:"FREEMIUM", limit:"Free tier", url:"https://canva.com", desc:"Graphic design for everyone. Magic Studio AI tools, 1M+ templates." },
+      { name:"Excalidraw", tier:"FREE", limit:"Free OSS", url:"https://excalidraw.com", desc:"Virtual whiteboard for sketching. Hand-drawn style diagrams. Real-time collab." },
+      { name:"Miro", tier:"FREE", limit:"Free 3 boards", url:"https://miro.com", desc:"Collaborative whiteboard. Free 3 boards, unlimited team members." },
+      { name:"Spline", tier:"FREE", limit:"Free tier", url:"https://spline.design", desc:"3D design for web. Real-time collaboration. Free public projects." },
+      { name:"Heroicons", tier:"FREE", limit:"Free OSS", url:"https://heroicons.com", desc:"Hand-crafted SVG icons by Tailwind team. MIT license." },
+      { name:"Google Fonts", tier:"FREE", limit:"Fully free", url:"https://fonts.google.com", desc:"1400+ open-source fonts. Zero cost, no attribution required." },
+      { name:"Unsplash", tier:"FREE", limit:"Free stock photos", url:"https://unsplash.com", desc:"1M+ free high-resolution photos. No attribution required." },
+      { name:"unDraw", tier:"FREE", limit:"Free illustrations", url:"https://undraw.co", desc:"Open-source SVG illustrations. Customizable color, no attribution." },
+      { name:"Storybook", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://storybook.js.org", desc:"UI component explorer. Document and test components in isolation." },
+      { name:"Rive", tier:"FREE", limit:"Free community plan", url:"https://rive.app", desc:"Interactive animation. Runtime for all platforms." },
+    ]
+  },
+  auth: {
+    label: "Auth, Security & API Tools",
+    emoji: "🔒",
+    tools: [
+      { name:"Auth0", tier:"FREE", limit:"Free 7.5K MAU", url:"https://auth0.com", desc:"Identity platform. Free 7,500 monthly active users. Social login, MFA." },
+      { name:"Clerk", tier:"FREE", limit:"Free 10K MAU", url:"https://clerk.com", desc:"Auth for React/Next.js. Free 10K MAU. Beautiful pre-built components." },
+      { name:"Supabase Auth", tier:"FREE", limit:"Included free", url:"https://supabase.com/auth", desc:"Auth built into Supabase free tier. Row Level Security + social login." },
+      { name:"Firebase Auth", tier:"FREE", limit:"Unlimited users free", url:"https://firebase.google.com/products/auth", desc:"Google's auth service. Unlimited users free. Social providers included." },
+      { name:"NextAuth.js", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://next-auth.js.org", desc:"Auth for Next.js. 40+ providers. Session management. Free forever." },
+      { name:"Keycloak", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://keycloak.org", desc:"Enterprise identity provider. OAuth2, OIDC, SAML. Self-host free." },
+      { name:"Snyk", tier:"FREE", limit:"Free tier", url:"https://snyk.io", desc:"Developer security. Free vulnerability scanning for open-source deps." },
+      { name:"Hoppscotch", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://hoppscotch.io", desc:"Open-source Postman alternative. REST, GraphQL, WebSocket testing." },
+      { name:"Bruno", tier:"OPEN SOURCE", limit:"Free OSS", url:"https://usebruno.com", desc:"Offline-first API client. Git-friendly, no cloud sync. Open source." },
+      { name:"Mockoon", tier:"FREE", limit:"Free OSS", url:"https://mockoon.com", desc:"Mock REST APIs locally. No server needed. Electron desktop app." },
+    ]
+  },
+  media: {
+    label: "AI Image, Video & Audio Tools",
+    emoji: "🎬",
+    tools: [
+      { name:"Stable Diffusion", tier:"OPEN SOURCE", limit:"Free OSS — local GPU", url:"https://stability.ai", desc:"Run locally on your GPU. Free forever, no API costs. AUTOMATIC1111 UI." },
+      { name:"Ideogram", tier:"FREE", limit:"Free 10 images/day", url:"https://ideogram.ai", desc:"AI image gen with excellent text rendering." },
+      { name:"Leonardo.ai", tier:"FREE", limit:"150 free tokens/day", url:"https://leonardo.ai", desc:"AI image generation. Quality SDXL-based models." },
+      { name:"Adobe Firefly", tier:"FREE", limit:"Free 25 credits/month", url:"https://firefly.adobe.com", desc:"Adobe's AI image generator. Commercial-safe, trained on licensed images." },
+      { name:"Bing Image Creator", tier:"FREE", limit:"Free — no account required", url:"https://bing.com/images/create", desc:"DALL-E 3 via Microsoft. Free image generation." },
+      { name:"CapCut", tier:"FREE", limit:"Free tier", url:"https://capcut.com", desc:"Video editing with AI features. Auto captions, background removal." },
+      { name:"DaVinci Resolve", tier:"FREE", limit:"Free version — very capable", url:"https://blackmagicdesign.com/products/davinciresolve", desc:"Professional video editing, color grading, audio." },
+      { name:"ElevenLabs Audio", tier:"FREE", limit:"Free 10K chars/month", url:"https://elevenlabs.io", desc:"Best AI voice synthesis. Clone your voice. Free non-commercial tier." },
+      { name:"Whisper (OpenAI)", tier:"OPEN SOURCE", limit:"Free OSS — run locally", url:"https://github.com/openai/whisper", desc:"Speech-to-text. Run locally free. State-of-the-art accuracy." },
+      { name:"Suno", tier:"FREE", limit:"50 credits/day free", url:"https://suno.com", desc:"Complete AI song generation. Vocals, instruments, lyrics from text." },
+    ]
+  },
+  learning: {
+    label: "Learning, Research & Startup Resources",
+    emoji: "📚",
+    tools: [
+      { name:"fast.ai", tier:"FREE", limit:"Free courses", url:"https://fast.ai", desc:"World-class practical ML courses. Completely free. Jeremy Howard's curriculum." },
+      { name:"Hugging Face Learn", tier:"FREE", limit:"Free courses", url:"https://huggingface.co/learn", desc:"NLP, Computer Vision, Deep RL courses. Free with HF account." },
+      { name:"DeepLearning.AI", tier:"FREE", limit:"Free audit mode", url:"https://deeplearning.ai", desc:"Andrew Ng's AI courses. Free audit mode. Specializations in AI/ML." },
+      { name:"CS50 (Harvard)", tier:"FREE", limit:"Free — free certificate", url:"https://cs50.harvard.edu", desc:"Harvard's intro CS + AI course. Free certificate, world-class quality." },
+      { name:"Papers With Code", tier:"FREE", limit:"Free", url:"https://paperswithcode.com", desc:"ML papers + code. Leaderboards, datasets, state-of-the-art benchmarks." },
+      { name:"Arxiv", tier:"FREE", limit:"Free", url:"https://arxiv.org", desc:"Preprint repository. All AI/ML papers available free before journal." },
+      { name:"Google for Startups Cloud", tier:"FREE", limit:"Up to $350K credits", url:"https://cloud.google.com/startup", desc:"Highest credit program for VC-backed AI startups to Series A." },
+      { name:"Microsoft for Startups", tier:"FREE", limit:"Up to $150K credits", url:"https://microsoft.com/en-us/startups", desc:"Azure + OpenAI API access. Requires live product with traction." },
+      { name:"GitHub Student Developer Pack", tier:"FREE", limit:"$100K+ value", url:"https://education.github.com/pack", desc:"Students: $200 DigitalOcean, Namecheap, Canva Pro, Notion, and 100+ more." },
+    ]
+  }
+};
+
+const TIER_CLASS = {
+  'FREE': 'tier-FREE',
+  'FREEMIUM': 'tier-FREEMIUM',
+  'OPEN SOURCE': 'tier-OPEN',
+  'BETA': 'tier-BETA',
+};
+
+// ── BUILD ────────────────────────────────────────────────────
+function build() {
+  const container = document.getElementById('allSections');
+  container.innerHTML = '';
+
+  for (const [catKey, cat] of Object.entries(TOOLS)) {
+    const sec = document.createElement('div');
+    sec.className = 'cat-section';
+    sec.dataset.cat = catKey;
+
+    let cards = cat.tools.map((t, i) => {
+      const img = getImg(catKey, i);
+      const tcls = TIER_CLASS[t.tier] || 'tier-FREE';
+      const tierLabel = t.tier === 'OPEN SOURCE' ? 'Open Source' : t.tier;
+      return `
+        <div class="product-card" onclick="openModal('${catKey}', ${i})">
+          <div class="card-img-wrap">
+            <img src="${img}" alt="${t.name}" loading="lazy">
+            <span class="card-tier-badge ${tcls}">${tierLabel}</span>
+            <span class="card-wishlist">✦</span>
+            <div class="card-overlay">
+              <span class="card-cta">View Tool</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-name">${t.name}</div>
+            <div class="card-limit">${t.limit}</div>
+            <div class="card-desc-short">${t.desc}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    sec.innerHTML = `
+      <div class="section-head">
+        <div class="section-title">${cat.emoji} ${cat.label}</div>
+        <div class="section-count">${cat.tools.length} tools</div>
+      </div>
+      <div class="product-grid">${cards}</div>
+    `;
+    container.appendChild(sec);
+  }
+}
+
+// ── FILTER ───────────────────────────────────────────────────
+function filterCat(cat, btn) {
+  document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  else {
+    const pills = document.querySelectorAll('.cat-pill');
+    if (cat === 'all') pills[0].classList.add('active');
+  }
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('.cat-section').forEach(s => {
+    s.classList.toggle('hidden', cat !== 'all' && s.dataset.cat !== cat);
+  });
+  document.querySelectorAll('.product-card').forEach(c => c.style.display = '');
+}
+
+function filterSearch() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.cat-pill')[0].classList.add('active');
+
+  if (!q) {
+    document.querySelectorAll('.cat-section').forEach(s => s.classList.remove('hidden'));
+    document.querySelectorAll('.product-card').forEach(c => c.style.display = '');
+    return;
+  }
+
+  document.querySelectorAll('.cat-section').forEach(sec => {
+    let any = false;
+    sec.querySelectorAll('.product-card').forEach(card => {
+      const text = card.textContent.toLowerCase();
+      const match = text.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) any = true;
+    });
+    sec.classList.toggle('hidden', !any);
+  });
+}
+
+// ── MODAL ────────────────────────────────────────────────────
+function openModal(catKey, idx) {
+  const t = TOOLS[catKey].tools[idx];
+  const cat = TOOLS[catKey];
+  const img = getImg(catKey, idx);
+  const tcls = TIER_CLASS[t.tier] || 'tier-FREE';
+  const tierLabel = t.tier === 'OPEN SOURCE' ? 'Open Source' : t.tier;
+
+  document.getElementById('modalImgEl').src = img;
+  document.getElementById('modalImgEl').alt = t.name;
+  const tierEl = document.getElementById('modalTier');
+  tierEl.textContent = tierLabel;
+  tierEl.className = `modal-tier ${tcls}`;
+  document.getElementById('modalName').textContent = t.name;
+  document.getElementById('modalCat').textContent = `${cat.emoji} ${cat.label}`;
+  document.getElementById('modalDesc').textContent = t.desc;
+  document.getElementById('modalLimit').textContent = t.limit;
+  document.getElementById('modalUrl').textContent = t.url.replace('https://','');
+  document.getElementById('modalCTA').href = t.url;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+build();
+</script>
+</body>
+</html>
