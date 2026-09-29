@@ -85,3 +85,8 @@ See the repository for license details. Tool names, logos, and trademarks belong
 ---
 
 *Compiled with love in May 2026. Now go build something beautiful.* 💋 ✨ 💅 ⚡ 🎀
+
+Made with 💖 by:
+[@MisoPrettyStacks](https://github.com/MisoPrettyStacks)
+
+@IGotGlitterOnMe on X
